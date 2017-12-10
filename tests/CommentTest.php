@@ -1,20 +1,20 @@
 <?php
 
-namespace yii2mod\comments\tests;
+namespace pointdnd\comments\tests;
 
 use Yii;
 use yii\base\Event;
 use yii\helpers\Json;
-use yii2mod\comments\models\CommentModel;
-use yii2mod\comments\tests\data\DefaultController;
-use yii2mod\comments\tests\data\PostModel;
-use yii2mod\comments\tests\data\User;
-use yii2mod\moderation\enums\Status;
+use pointdnd\comments\models\CommentModel;
+use pointdnd\comments\tests\data\DefaultController;
+use pointdnd\comments\tests\data\PostModel;
+use pointdnd\comments\tests\data\User;
+use pointdnd\moderation\enums\Status;
 
 /**
  * Class CommentTest
  *
- * @package yii2mod\comments\tests
+ * @package pointdnd\comments\tests
  */
 class CommentTest extends TestCase
 {

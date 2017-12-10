@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2mod\comments\models;
+namespace pointdnd\comments\models;
 
 use paulzi\adjacencyList\AdjacencyListBehavior;
 use Yii;
@@ -9,11 +9,11 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
-use yii2mod\behaviors\PurifyBehavior;
-use yii2mod\comments\traits\ModuleTrait;
-use yii2mod\moderation\enums\Status;
-use yii2mod\moderation\ModerationBehavior;
-use yii2mod\moderation\ModerationQuery;
+use pointdnd\behaviors\PurifyBehavior;
+use pointdnd\comments\traits\ModuleTrait;
+use pointdnd\moderation\enums\Status;
+use pointdnd\moderation\ModerationBehavior;
+use pointdnd\moderation\ModerationQuery;
 
 /**
  * Class CommentModel
@@ -65,7 +65,7 @@ class CommentModel extends ActiveRecord
     {
         return [
             [['entity', 'entityId'], 'required'],
-            ['content', 'required', 'message' => Yii::t('yii2mod.comments', 'Comment cannot be blank.')],
+            ['content', 'required', 'message' => Yii::t('pointdnd.comments', 'Comment cannot be blank.')],
             [['content', 'entity', 'relatedTo', 'url'], 'string'],
             ['status', 'default', 'value' => Status::APPROVED],
             ['status', 'in', 'range' => Status::getConstantsByName()],
@@ -91,7 +91,7 @@ class CommentModel extends ActiveRecord
                 ->exists();
 
             if (!$parentCommentExist) {
-                $this->addError('content', Yii::t('yii2mod.comments', 'Oops, something went wrong. Please try again later.'));
+                $this->addError('content', Yii::t('pointdnd.comments', 'Oops, something went wrong. Please try again later.'));
             }
         }
     }
@@ -141,19 +141,19 @@ class CommentModel extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('yii2mod.comments', 'ID'),
-            'content' => Yii::t('yii2mod.comments', 'Content'),
-            'entity' => Yii::t('yii2mod.comments', 'Entity'),
-            'entityId' => Yii::t('yii2mod.comments', 'Entity ID'),
-            'parentId' => Yii::t('yii2mod.comments', 'Parent ID'),
-            'status' => Yii::t('yii2mod.comments', 'Status'),
-            'level' => Yii::t('yii2mod.comments', 'Level'),
-            'createdBy' => Yii::t('yii2mod.comments', 'Created by'),
-            'updatedBy' => Yii::t('yii2mod.comments', 'Updated by'),
-            'relatedTo' => Yii::t('yii2mod.comments', 'Related to'),
-            'url' => Yii::t('yii2mod.comments', 'Url'),
-            'createdAt' => Yii::t('yii2mod.comments', 'Created date'),
-            'updatedAt' => Yii::t('yii2mod.comments', 'Updated date'),
+            'id' => Yii::t('pointdnd.comments', 'ID'),
+            'content' => Yii::t('pointdnd.comments', 'Content'),
+            'entity' => Yii::t('pointdnd.comments', 'Entity'),
+            'entityId' => Yii::t('pointdnd.comments', 'Entity ID'),
+            'parentId' => Yii::t('pointdnd.comments', 'Parent ID'),
+            'status' => Yii::t('pointdnd.comments', 'Status'),
+            'level' => Yii::t('pointdnd.comments', 'Level'),
+            'createdBy' => Yii::t('pointdnd.comments', 'Created by'),
+            'updatedBy' => Yii::t('pointdnd.comments', 'Updated by'),
+            'relatedTo' => Yii::t('pointdnd.comments', 'Related to'),
+            'url' => Yii::t('pointdnd.comments', 'Url'),
+            'createdAt' => Yii::t('pointdnd.comments', 'Created date'),
+            'updatedAt' => Yii::t('pointdnd.comments', 'Updated date'),
         ];
     }
 

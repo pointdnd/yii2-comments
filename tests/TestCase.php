@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2mod\comments\tests;
+namespace pointdnd\comments\tests;
 
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -49,22 +49,22 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'scriptUrl' => 'index.php',
                 ],
                 'user' => [
-                    'identityClass' => 'yii2mod\comments\tests\data\User',
+                    'identityClass' => 'pointdnd\comments\tests\data\User',
                 ],
                 'i18n' => [
                     'translations' => [
-                        'yii2mod.comments' => [
+                        'pointdnd.comments' => [
                             'class' => 'yii\i18n\PhpMessageSource',
-                            'basePath' => '@yii2mod/comments/messages',
+                            'basePath' => '@pointdnd/comments/messages',
                         ],
                     ],
                 ],
             ],
             'modules' => [
                 'comment' => [
-                    'class' => 'yii2mod\comments\Module',
+                    'class' => 'pointdnd\comments\Module',
                     'userIdentityClass' => '',
-                    'controllerNamespace' => 'yii2mod\comments\tests\data',
+                    'controllerNamespace' => 'pointdnd\comments\tests\data',
                 ],
             ],
         ], $config));

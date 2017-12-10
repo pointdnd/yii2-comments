@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2mod\comments\controllers;
+namespace pointdnd\comments\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
@@ -11,15 +11,15 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
-use yii2mod\comments\events\CommentEvent;
-use yii2mod\comments\models\CommentModel;
-use yii2mod\comments\traits\ModuleTrait;
-use yii2mod\editable\EditableAction;
+use pointdnd\comments\events\CommentEvent;
+use pointdnd\comments\models\CommentModel;
+use pointdnd\comments\traits\ModuleTrait;
+use pointdnd\editable\EditableAction;
 
 /**
  * Class DefaultController
  *
- * @package yii2mod\comments\controllers
+ * @package pointdnd\comments\controllers
  */
 class DefaultController extends Controller
 {
@@ -27,25 +27,25 @@ class DefaultController extends Controller
 
     /**
      * Event is triggered before creating a new comment.
-     * Triggered with yii2mod\comments\events\CommentEvent
+     * Triggered with pointdnd\comments\events\CommentEvent
      */
     const EVENT_BEFORE_CREATE = 'beforeCreate';
 
     /**
      * Event is triggered after creating a new comment.
-     * Triggered with yii2mod\comments\events\CommentEvent
+     * Triggered with pointdnd\comments\events\CommentEvent
      */
     const EVENT_AFTER_CREATE = 'afterCreate';
 
     /**
      * Event is triggered before deleting the comment.
-     * Triggered with yii2mod\comments\events\CommentEvent
+     * Triggered with pointdnd\comments\events\CommentEvent
      */
     const EVENT_BEFORE_DELETE = 'beforeDelete';
 
     /**
      * Event is triggered after deleting the comment.
-     * Triggered with yii2mod\comments\events\CommentEvent
+     * Triggered with pointdnd\comments\events\CommentEvent
      */
     const EVENT_AFTER_DELETE = 'afterDelete';
 
@@ -138,11 +138,11 @@ class DefaultController extends Controller
         if ($commentModel->markRejected()) {
             $this->trigger(self::EVENT_AFTER_DELETE, $event);
 
-            return Yii::t('yii2mod.comments', 'Comment has been deleted.');
+            return Yii::t('pointdnd.comments', 'Comment has been deleted.');
         } else {
             Yii::$app->response->setStatusCode(500);
 
-            return Yii::t('yii2mod.comments', 'Comment has not been deleted. Please try again!');
+            return Yii::t('pointdnd.comments', 'Comment has not been deleted. Please try again!');
         }
     }
 
@@ -161,7 +161,7 @@ class DefaultController extends Controller
         if (null !== ($model = $commentModel::findOne($id))) {
             return $model;
         } else {
-            throw new NotFoundHttpException(Yii::t('yii2mod.comments', 'The requested page does not exist.'));
+            throw new NotFoundHttpException(Yii::t('pointdnd.comments', 'The requested page does not exist.'));
         }
     }
 
@@ -181,6 +181,6 @@ class DefaultController extends Controller
             return Json::decode($decryptEntity);
         }
 
-        throw new BadRequestHttpException(Yii::t('yii2mod.comments', 'Oops, something went wrong. Please try again later.'));
+        throw new BadRequestHttpException(Yii::t('pointdnd.comments', 'Oops, something went wrong. Please try again later.'));
     }
 }
