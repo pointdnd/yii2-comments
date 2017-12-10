@@ -49,6 +49,7 @@ return [
     'Select Author' => 'Select Author',
     'Update Comment: {0}' => 'Update Comment: {0}',
     'Active' => 'Active',
+    'Rate' => 'Rate',
     'Deleted' => 'Deleted',
     'Go Back' => 'Go Back',
 ];
