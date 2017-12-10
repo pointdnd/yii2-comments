@@ -48,6 +48,7 @@ return [
     'Select Status' => 'Выберите Статус',
     'Select Author' => 'Выберите Автора',
     'Update Comment: {0}' => 'Обновить комментарий: {0}',
+    'Rate' => 'Оценка',
     'Active' => 'Включён',
     'Deleted' => 'Удален',
     'Go Back' => 'Вернуться',

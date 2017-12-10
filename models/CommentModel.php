@@ -152,6 +152,7 @@ class CommentModel extends ActiveRecord
             'updatedBy' => Yii::t('yii2mod.comments', 'Updated by'),
             'relatedTo' => Yii::t('yii2mod.comments', 'Related to'),
             'url' => Yii::t('yii2mod.comments', 'Url'),
+            'rate' => Yii::t('yii2mod.comments', 'Rate'),
             'createdAt' => Yii::t('yii2mod.comments', 'Created date'),
             'updatedAt' => Yii::t('yii2mod.comments', 'Updated date'),
         ];
