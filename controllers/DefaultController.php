@@ -1,6 +1,6 @@
 <?php
 
-namespace pointdnd\comments\controllers;
+namespace yii2mod\comments\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
@@ -11,15 +11,15 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
-use pointdnd\comments\events\CommentEvent;
-use pointdnd\comments\models\CommentModel;
-use pointdnd\comments\traits\ModuleTrait;
-use pointdnd\editable\EditableAction;
+use yii2mod\comments\events\CommentEvent;
+use yii2mod\comments\models\CommentModel;
+use yii2mod\comments\traits\ModuleTrait;
+use yii2mod\editable\EditableAction;
 
 /**
  * Class DefaultController
  *
- * @package pointdnd\comments\controllers
+ * @package yii2mod\comments\controllers
  */
 class DefaultController extends Controller
 {
@@ -27,25 +27,25 @@ class DefaultController extends Controller
 
     /**
      * Event is triggered before creating a new comment.
-     * Triggered with pointdnd\comments\events\CommentEvent
+     * Triggered with yii2mod\comments\events\CommentEvent
      */
     const EVENT_BEFORE_CREATE = 'beforeCreate';
 
     /**
      * Event is triggered after creating a new comment.
-     * Triggered with pointdnd\comments\events\CommentEvent
+     * Triggered with yii2mod\comments\events\CommentEvent
      */
     const EVENT_AFTER_CREATE = 'afterCreate';
 
     /**
      * Event is triggered before deleting the comment.
-     * Triggered with pointdnd\comments\events\CommentEvent
+     * Triggered with yii2mod\comments\events\CommentEvent
      */
     const EVENT_BEFORE_DELETE = 'beforeDelete';
 
     /**
      * Event is triggered after deleting the comment.
-     * Triggered with pointdnd\comments\events\CommentEvent
+     * Triggered with yii2mod\comments\events\CommentEvent
      */
     const EVENT_AFTER_DELETE = 'afterDelete';
 
@@ -131,18 +131,17 @@ class DefaultController extends Controller
     public function actionDelete($id)
     {
         $commentModel = $this->findModel($id);
-        $commentModel->setScenario(CommentModel::SCENARIO_MODERATION);
         $event = Yii::createObject(['class' => CommentEvent::class, 'commentModel' => $commentModel]);
         $this->trigger(self::EVENT_BEFORE_DELETE, $event);
 
         if ($commentModel->markRejected()) {
             $this->trigger(self::EVENT_AFTER_DELETE, $event);
 
-            return Yii::t('pointdnd.comments', 'Comment has been deleted.');
+            return Yii::t('yii2mod.comments', 'Comment has been deleted.');
         } else {
             Yii::$app->response->setStatusCode(500);
 
-            return Yii::t('pointdnd.comments', 'Comment has not been deleted. Please try again!');
+            return Yii::t('yii2mod.comments', 'Comment has not been deleted. Please try again!');
         }
     }
 
@@ -158,10 +157,10 @@ class DefaultController extends Controller
     protected function findModel($id)
     {
         $commentModel = $this->getModule()->commentModelClass;
-        if (null !== ($model = $commentModel::findOne($id))) {
+        if (($model = $commentModel::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException(Yii::t('pointdnd.comments', 'The requested page does not exist.'));
+            throw new NotFoundHttpException(Yii::t('yii2mod.comments', 'The requested page does not exist.'));
         }
     }
 
@@ -177,10 +176,10 @@ class DefaultController extends Controller
     protected function getCommentAttributesFromEntity($entity)
     {
         $decryptEntity = Yii::$app->getSecurity()->decryptByKey(utf8_decode($entity), $this->getModule()->id);
-        if (false !== $decryptEntity) {
+        if ($decryptEntity !== false) {
             return Json::decode($decryptEntity);
         }
 
-        throw new BadRequestHttpException(Yii::t('pointdnd.comments', 'Oops, something went wrong. Please try again later.'));
+        throw new BadRequestHttpException(Yii::t('yii2mod.comments', 'Oops, something went wrong. Please try again later.'));
     }
 }

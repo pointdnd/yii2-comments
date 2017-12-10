@@ -1,13 +1,13 @@
 <?php
 
-namespace pointdnd\comments;
+namespace yii2mod\comments;
 
 use yii\web\AssetBundle;
 
 /**
  * Class CommentAsset
  *
- * @package pointdnd\comments
+ * @package yii2mod\comments
  */
 class CommentAsset extends AssetBundle
 {

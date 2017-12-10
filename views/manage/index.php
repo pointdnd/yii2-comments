@@ -1,17 +1,17 @@
 <?php
 
+use pointdnd\moderation\enums\Status;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\widgets\Pjax;
-use pointdnd\moderation\enums\Status;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel \pointdnd\comments\models\search\CommentSearch */
 /* @var $commentModel \pointdnd\comments\models\CommentModel */
 
-$this->title = Yii::t('pointdnd.comments', 'Comments Management');
+$this->title = Yii::t('yii2mod.comments', 'Comments Management');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="comments-index">
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->getAuthorName();
                 },
                 'filter' => $commentModel::getAuthors(),
-                'filterInputOptions' => ['prompt' => Yii::t('pointdnd.comments', 'Select Author'), 'class' => 'form-control'],
+                'filterInputOptions' => ['prompt' => Yii::t('yii2mod.comments', 'Select Author'), 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'status',
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Status::getLabel($model->status);
                 },
                 'filter' => Status::listData(),
-                'filterInputOptions' => ['prompt' => Yii::t('pointdnd.comments', 'Select Status'), 'class' => 'form-control'],
+                'filterInputOptions' => ['prompt' => Yii::t('yii2mod.comments', 'Select Status'), 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'createdAt',
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view}{update}{delete}',
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
-                        $title = Yii::t('pointdnd.comments', 'View');
+                        $title = Yii::t('yii2mod.comments', 'View');
                         $options = [
                             'title' => $title,
                             'aria-label' => $title,

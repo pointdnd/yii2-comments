@@ -1,9 +1,9 @@
 <?php
 
-namespace pointdnd\comments\models\search;
+namespace yii2mod\comments\models\search;
 
-use yii\data\ActiveDataProvider;
 use pointdnd\comments\models\CommentModel;
+use yii\data\ActiveDataProvider;
 
 /**
  * Class CommentSearch

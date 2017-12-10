@@ -19,13 +19,13 @@
     ],
     "require": {
         "php": ">=5.6",
-        "yiisoft/yii2": "*",
+        "yiisoft/yii2": ">=2.0.8",
         "yii2mod/yii2-behaviors": "*",
         "yii2mod/yii2-enum": "*",
         "yii2mod/yii2-moderation": "*",
         "yii2mod/yii2-editable": "*",
         "asofter/yii2-imperavi-redactor": "*",
-        "paulzi/yii2-adjacency-list": "*",
+        "paulzi/yii2-adjacency-list": "^2.0",
         "yii2mod/yii2-star-rating": "*"
     },
     "require-dev": {
@@ -34,7 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "pointdnd\\comments\\": ""
+            "yii2mod\\comments\\": ""
         }
     },
     "repositories": [

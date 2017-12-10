@@ -1,17 +1,18 @@
 <?php
 
-namespace pointdnd\comments\controllers;
+namespace yii2mod\comments\controllers;
 
 use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use pointdnd\comments\models\CommentModel;
-use pointdnd\comments\traits\ModuleTrait;
+use yii2mod\comments\models\CommentModel;
+use yii2mod\comments\traits\ModuleTrait;
 
 /**
  * Class ManageController
  *
- * @package pointdnd\comments\controllers
+ * @package yii2mod\comments\controllers
  */
 class ManageController extends Controller
 {
@@ -20,29 +21,17 @@ class ManageController extends Controller
     /**
      * @var string path to index view file, which is used in admin panel
      */
-    public $indexView = '@vendor/pointdnd/yii2-comments/views/manage/index';
+    public $indexView = '@vendor/yii2mod/yii2-comments/views/manage/index';
 
     /**
      * @var string path to update view file, which is used in admin panel
      */
-    public $updateView = '@vendor/pointdnd/yii2-comments/views/manage/update';
+    public $updateView = '@vendor/yii2mod/yii2-comments/views/manage/update';
 
     /**
      * @var string search class name for searching
      */
-    public $searchClass = 'pointdnd\comments\models\search\CommentSearch';
-
-    /**
-     * @var array verb filter config
-     */
-    public $verbFilterConfig = [
-        'class' => 'yii\filters\VerbFilter',
-        'actions' => [
-            'index' => ['get'],
-            'update' => ['get', 'post'],
-            'delete' => ['post'],
-        ],
-    ];
+    public $searchClass = 'yii2mod\comments\models\search\CommentSearch';
 
     /**
      * @var array access control config
@@ -63,7 +52,14 @@ class ManageController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => $this->verbFilterConfig,
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'index' => ['get'],
+                    'update' => ['get', 'post'],
+                    'delete' => ['post'],
+                ],
+            ],
             'access' => $this->accessControlConfig,
         ];
     }
@@ -87,7 +83,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Updates an existing CommentModel.
+     * Updates an existing CommentModel model.
      *
      * If update is successful, the browser will be redirected to the 'index' page.
      *
@@ -100,7 +96,7 @@ class ManageController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('pointdnd.comments', 'Comment has been saved.'));
+            Yii::$app->session->setFlash('success', Yii::t('yii2mod.comments', 'Comment has been saved.'));
 
             return $this->redirect(['index']);
         }
@@ -122,13 +118,13 @@ class ManageController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->deleteWithChildren();
-        Yii::$app->session->setFlash('success', Yii::t('pointdnd.comments', 'Comment has been deleted.'));
+        Yii::$app->session->setFlash('success', Yii::t('yii2mod.comments', 'Comment has been deleted.'));
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the CommentModel based on its primary key value.
+     * Finds the CommentModel model based on its primary key value.
      *
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
@@ -142,10 +138,10 @@ class ManageController extends Controller
     {
         $commentModel = $this->getModule()->commentModelClass;
 
-        if (null !== ($model = $commentModel::findOne($id))) {
+        if (($model = $commentModel::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException(Yii::t('pointdnd.comments', 'The requested page does not exist.'));
+            throw new NotFoundHttpException(Yii::t('yii2mod.comments', 'The requested page does not exist.'));
         }
     }
 }

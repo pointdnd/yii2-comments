@@ -1,14 +1,14 @@
 <?php
 
-namespace pointdnd\comments\events;
+namespace yii2mod\comments\events;
 
 use yii\base\Event;
-use pointdnd\comments\models\CommentModel;
+use yii2mod\comments\models\CommentModel;
 
 /**
  * Class CommentEvent
  *
- * @package pointdnd\comments\events
+ * @package yii2mod\comments\events
  */
 class CommentEvent extends Event
 {

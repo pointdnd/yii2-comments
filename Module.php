@@ -1,13 +1,13 @@
 <?php
 
-namespace pointdnd\comments;
+namespace yii2mod\comments;
 
 use Yii;
 
 /**
  * Class Module
  *
- * @package pointdnd\comments
+ * @package yii2mod\comments
  */
 class Module extends \yii\base\Module
 {
@@ -17,14 +17,14 @@ class Module extends \yii\base\Module
     public $userIdentityClass;
 
     /**
-     * @var string the class name of the comment model object, by default its pointdnd\comments\models\CommentModel
+     * @var string the class name of the comment model object, by default its yii2mod\comments\models\CommentModel
      */
-    public $commentModelClass = 'pointdnd\comments\models\CommentModel';
+    public $commentModelClass = 'yii2mod\comments\models\CommentModel';
 
     /**
      * @var string the namespace that controller classes are in
      */
-    public $controllerNamespace = 'pointdnd\comments\controllers';
+    public $controllerNamespace = 'yii2mod\comments\controllers';
 
     /**
      * @var bool when admin can edit comments on frontend
@@ -38,7 +38,7 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
-        if (null === $this->userIdentityClass) {
+        if ($this->userIdentityClass === null) {
             $this->userIdentityClass = Yii::$app->getUser()->identityClass;
         }
     }
