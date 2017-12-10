@@ -1,17 +1,17 @@
 <?php
 
+use pointdnd\moderation\enums\Status;
 use yii\helpers\Html;
 use yii\imperavi\Widget;
 use yii\widgets\ActiveForm;
-use pointdnd\moderation\enums\Status;
 
 /* @var $this yii\web\View */
 /* @var $model \pointdnd\comments\models\CommentModel */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = Yii::t('pointdnd.comments', 'Update Comment: {0}', $model->id);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('pointdnd.comments', 'Comments Management'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = Yii::t('pointdnd.comments', 'Update');
+$this->title = Yii::t('yii2mod.comments', 'Update Comment: {0}', $model->id);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii2mod.comments', 'Comments Management'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = Yii::t('yii2mod.comments', 'Update');
 ?>
 <div class="comment-update">
 
@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = Yii::t('pointdnd.comments', 'Update');
         ?>
         <?php echo $form->field($model, 'status')->dropDownList(Status::listData()); ?>
         <div class="form-group">
-            <?php echo Html::submitButton(Yii::t('pointdnd.comments', 'Update'), ['class' => 'btn btn-primary']); ?>
-            <?php echo Html::a(Yii::t('pointdnd.comments', 'Go Back'), ['index'], ['class' => 'btn btn-default']); ?>
+            <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Update'), ['class' => 'btn btn-primary']); ?>
+            <?php echo Html::a(Yii::t('yii2mod.comments', 'Go Back'), ['index'], ['class' => 'btn btn-default']); ?>
         </div>
         <?php ActiveForm::end(); ?>
     </div>

@@ -1,20 +1,20 @@
 <?php
 
-namespace pointdnd\comments\widgets;
+namespace yii2mod\comments\widgets;
 
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use yii\data\ArrayDataProvider;
 use yii\helpers\Json;
-use pointdnd\comments\CommentAsset;
-use pointdnd\comments\models\CommentModel;
-use pointdnd\comments\traits\ModuleTrait;
+use yii2mod\comments\CommentAsset;
+use yii2mod\comments\models\CommentModel;
+use yii2mod\comments\traits\ModuleTrait;
 
 /**
  * Class Comment
  *
- * @package pointdnd\comments\widgets
+ * @package yii2mod\comments\widgets
  */
 class Comment extends Widget
 {
@@ -105,7 +105,7 @@ class Comment extends Widget
         parent::init();
 
         if (empty($this->model)) {
-            throw new InvalidConfigException(Yii::t('pointdnd.comments', 'The "model" property must be set.'));
+            throw new InvalidConfigException(Yii::t('yii2mod.comments', 'The "model" property must be set.'));
         }
 
         if (empty($this->pjaxContainerId)) {
@@ -113,7 +113,7 @@ class Comment extends Widget
         }
 
         if (empty($this->model->{$this->entityIdAttribute})) {
-            throw new InvalidConfigException(Yii::t('pointdnd.comments', 'The "entityIdAttribute" value for widget model cannot be empty.'));
+            throw new InvalidConfigException(Yii::t('yii2mod.comments', 'The "entityIdAttribute" value for widget model cannot be empty.'));
         }
 
         $this->entity = hash('crc32', get_class($this->model));
