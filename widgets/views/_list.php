@@ -1,8 +1,8 @@
 <?php
 
+use pointdnd\editable\Editable;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use pointdnd\editable\Editable;
 
 /* @var $this \yii\web\View */
 /* @var $model \pointdnd\comments\models\CommentModel */
@@ -16,14 +16,21 @@ use pointdnd\editable\Editable;
         <div class="comment-details">
             <div class="comment-action-buttons">
                 <?php if (Yii::$app->getUser()->can('admin')) : ?>
-                    <?php echo Html::a('<span class="glyphicon glyphicon-trash"></span> ' . Yii::t('pointdnd.comments', 'Delete'), '#', ['class' => 'delete-comment-btn', 'data' => ['action' => 'delete', 'url' => Url::to(['/comment/default/delete', 'id' => $model->id]), 'comment-id' => $model->id]]); ?>
+                    <?php echo Html::a('<span class="glyphicon glyphicon-trash"></span> ' . Yii::t('yii2mod.comments', 'Delete'), '#', ['class' => 'delete-comment-btn', 'data' => ['action' => 'delete', 'url' => Url::to(['/comment/default/delete', 'id' => $model->id]), 'comment-id' => $model->id]]); ?>
                 <?php endif; ?>
                 <?php if (!Yii::$app->user->isGuest && ($model->level < $maxLevel || is_null($maxLevel))) : ?>
-                    <?php echo Html::a("<span class='glyphicon glyphicon-share-alt'></span> " . Yii::t('pointdnd.comments', 'Reply'), '#', ['class' => 'reply-comment-btn', 'data' => ['action' => 'reply', 'comment-id' => $model->id]]); ?>
+                    <?php echo Html::a("<span class='glyphicon glyphicon-share-alt'></span> " . Yii::t('yii2mod.comments', 'Reply'), '#', ['class' => 'reply-comment-btn', 'data' => ['action' => 'reply', 'comment-id' => $model->id]]); ?>
                 <?php endif; ?>
             </div>
             <div class="comment-author-name">
                 <span><?php echo $model->getAuthorName(); ?></span>
+                <?php
+                echo \yii2mod\rating\StarRating::widget([
+                    'name' => $model->id,
+                    'value' => $model->rate,
+
+                ]);
+                ?>
                 <?php echo Html::a($model->getPostedDate(), $model->getAnchorUrl(), ['class' => 'comment-date']); ?>
             </div>
             <div class="comment-body">

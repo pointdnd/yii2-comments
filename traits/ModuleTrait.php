@@ -1,9 +1,9 @@
 <?php
 
-namespace pointdnd\comments\traits;
+namespace yii2mod\comments\traits;
 
 use Yii;
-use pointdnd\comments\Module;
+use yii2mod\comments\Module;
 
 /**
  * Class ModuleTrait

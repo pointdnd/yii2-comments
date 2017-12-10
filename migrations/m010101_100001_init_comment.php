@@ -14,7 +14,7 @@ class m010101_100001_init_comment extends Migration
     {
         $tableOptions = null;
 
-        if ('mysql' === $this->db->driverName) {
+        if ($this->db->driverName === 'mysql') {
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
@@ -28,7 +28,6 @@ class m010101_100001_init_comment extends Migration
             'createdBy' => $this->integer()->notNull(),
             'updatedBy' => $this->integer()->notNull(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
-            'rate' => $this->smallInteger()->defaultValue(1),
             'createdAt' => $this->integer()->notNull(),
             'updatedAt' => $this->integer()->notNull(),
         ], $tableOptions);
