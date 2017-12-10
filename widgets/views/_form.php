@@ -19,7 +19,15 @@ use yii\widgets\ActiveForm;
         'validateOnChange' => false,
         'validateOnBlur' => false,
     ]); ?>
-
+    <? echo $form->field($model, 'rate')->widget(\yii2mod\rating\StarRating::class, [
+    'options' => [
+        'value'=>10,
+        'numberMax'=>10,
+    ],
+    'clientOptions' => [
+    // Your client options
+    ],
+    ]); ?>
     <?php echo $form->field($commentModel, 'content', ['template' => '{input}{error}'])->textarea(['placeholder' => Yii::t('yii2mod.comments', 'Add a comment...'), 'rows' => 4, 'data' => ['comment' => 'content']]); ?>
     <?php echo $form->field($commentModel, 'parentId', ['template' => '{input}'])->hiddenInput(['data' => ['comment' => 'parent-id']]); ?>
     <div class="comment-box-partial">

@@ -29,6 +29,7 @@ use yii2mod\moderation\ModerationQuery;
  * @property string $relatedTo
  * @property string $url
  * @property int $status
+ * @property int $rate
  * @property int $createdAt
  * @property int $updatedAt
  *
@@ -70,7 +71,7 @@ class CommentModel extends ActiveRecord
             ['status', 'in', 'range' => Status::getConstantsByName()],
             ['level', 'default', 'value' => 1],
             ['parentId', 'validateParentID', 'except' => static::SCENARIO_MODERATION],
-            [['entityId', 'parentId', 'status', 'level'], 'integer'],
+            [['entityId', 'parentId', 'status', 'level','rate'], 'integer'],
         ];
     }
 

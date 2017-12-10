@@ -23,7 +23,8 @@
         "yii2mod/yii2-moderation": "*",
         "yii2mod/yii2-editable": "*",
         "asofter/yii2-imperavi-redactor": "*",
-        "paulzi/yii2-adjacency-list": "^2.0"
+        "paulzi/yii2-adjacency-list": "^2.0",
+        "yii2mod/yii2-star-rating": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.0",
