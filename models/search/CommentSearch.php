@@ -2,7 +2,7 @@
 
 namespace yii2mod\comments\models\search;
 
-use pointdnd\comments\models\CommentModel;
+use yii2mod\comments\models\CommentModel;
 use yii\data\ActiveDataProvider;
 
 /**
