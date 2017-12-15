@@ -1,6 +1,6 @@
 <?php
 
-use pointdnd\editable\Editable;
+use yii2mod\editable\Editable;
 use yii\helpers\Html;
 use yii\helpers\Url;
 

@@ -1,6 +1,6 @@
 <?php
 
-use pointdnd\moderation\enums\Status;
+use yii2mod\moderation\enums\Status;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;

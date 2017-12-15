@@ -36,6 +36,7 @@ return [
     'Reply' => 'Reply',
     'Comments ({0})' => 'Comments ({0})',
     'Comment cannot be blank.' => 'Comment cannot be blank.',
+    'Rate cannot be blank.' => 'Rate cannot be blank.',
     'Comment has not been deleted. Please try again!' => 'Comment has not been deleted. Please try again!',
     'Add a comment...' => 'Add a comment...',
     'Comment' => 'Comment',

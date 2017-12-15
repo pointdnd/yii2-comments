@@ -36,6 +36,7 @@ return [
     'Reply' => 'Ответить',
     'Comments ({0})' => 'Комментарии ({0})',
     'Comment cannot be blank.' => 'Комментарий не может быть пустым.',
+    'Rate cannot be blank.' => 'Оценка не может быть пустой.',
     'Comment has not been deleted. Please try again!' => 'Не удалось удалить комментарий. Попробуйте пожалуйста еще раз!',
     'Add a comment...' => 'Добавить комментарий...',
     'Comment' => 'Опубликовать комментарий',
