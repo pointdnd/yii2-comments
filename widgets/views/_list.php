@@ -4,6 +4,7 @@ use yii2mod\editable\Editable;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 /* @var $this \yii\web\View */
 /* @var $model \pointdnd\comments\models\CommentModel */
 /* @var $maxLevel null|integer comments max level */
